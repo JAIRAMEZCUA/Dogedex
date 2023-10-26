@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/dogDetailActivity">
+    <activity
+        android:id="@+id/dogDetailActivity"
+        android:name="com.hackaprende.dogedex.ui.dog.dogDetail.DogDetailActivity"
+        android:label="DogDetailActivity"
+        tools:layout="@layout/activity_dog_detail">
+        <argument
+            android:name="type"
+            app:argType="com.hackaprende.dogedex.data.network.api.models.Dog" />
+    </activity>
+
+    <activity
+        android:id="@+id/dogListActivity"
+        android:name="com.hackaprende.dogedex.ui.dog.dogList.DogListActivity"
+        android:label="DogListActivity"
+        tools:layout="@layout/activity_dog_list">
+
+        <action
+            android:id="@+id/action_dogListActivity_to_dogDetailActivity"
+            app:destination="@id/dogDetailActivity" />
+
+    </activity>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.hackaprende.dogedex.ui.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
