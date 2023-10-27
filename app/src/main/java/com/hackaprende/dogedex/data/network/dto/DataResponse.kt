@@ -1,4 +1,4 @@
-package com.hackaprende.dogedex.data.network.response.dto
+package com.hackaprende.dogedex.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 

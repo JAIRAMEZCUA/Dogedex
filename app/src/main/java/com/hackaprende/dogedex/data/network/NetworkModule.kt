@@ -1,10 +1,9 @@
 package com.hackaprende.dogedex.data.network
 
-import com.hackaprende.dogedex.BASE_URL
+import com.hackaprende.dogedex.utils.BASE_URL
 import com.hackaprende.dogedex.data.network.api.DogApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object NetworkModule {
 

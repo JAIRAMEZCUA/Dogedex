@@ -2,13 +2,14 @@ package com.hackaprende.dogedex.ui.dog.dogList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hackaprende.dogedex.data.RepositoryDogs
+import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatus
+import com.hackaprende.dogedex.data.network.repository.DogRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class DogListViewModel : ViewModel() {
-    private var dogRepo = RepositoryDogs()
+    private var dogRepo = DogRepository()
 
     private val _statusDownload = MutableStateFlow<ApiResponseStatus>(ApiResponseStatus.LOADING)
     val statusDownload: StateFlow<ApiResponseStatus>

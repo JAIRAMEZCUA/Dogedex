@@ -1,7 +1,7 @@
-package com.hackaprende.dogedex.data.network.response.dtoMapper
+package com.hackaprende.dogedex.data.network.dto.dtoMapper
 
 import com.hackaprende.dogedex.data.network.api.models.Dog
-import com.hackaprende.dogedex.data.network.response.dto.DogDTO
+import com.hackaprende.dogedex.data.network.dto.DogDTO
 
 
 object DogDTOMapper {
@@ -17,4 +17,5 @@ object DogDTOMapper {
     fun fromDogDTOListToDogDomainList(dogDTOList: List<DogDTO>): List<Dog> {
         return dogDTOList.map { fromDogDTOToDogDomain(it) }
     }
+
 }

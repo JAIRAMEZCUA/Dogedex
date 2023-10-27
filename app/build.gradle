@@ -59,7 +59,16 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.8.0"
 
     //NavComponent
-    def navVersion = "2.3.5"
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    def nav_version = "2.5.3"
+    //NavComponent
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    //coin
+    implementation "io.coil-kt:coil:1.4.0"
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        languageVersion = "1.9"
+    }
 }
