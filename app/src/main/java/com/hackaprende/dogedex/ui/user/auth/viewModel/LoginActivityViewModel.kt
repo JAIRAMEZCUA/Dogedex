@@ -31,9 +31,24 @@ class LoginActivityViewModel() : ViewModel() {
         viewModelScope.launch {
             _status.value = ApiResponseStatusGeneric.Loading()
             handleResponseStatus(
-                authRepository.signInUser(
+                authRepository.signUpUser(
                     email,
                     password, passwordConfirmation
+                )
+            )
+        }
+    }
+
+
+    fun signIn(
+        email: String, password: String
+    ) {
+        viewModelScope.launch {
+            _status.value = ApiResponseStatusGeneric.Loading()
+            handleResponseStatus(
+                authRepository.signInUser(
+                    email,
+                    password
                 )
             )
         }

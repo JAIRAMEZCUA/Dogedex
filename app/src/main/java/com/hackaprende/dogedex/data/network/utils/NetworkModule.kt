@@ -1,4 +1,4 @@
-package com.hackaprende.dogedex.data.network
+package com.hackaprende.dogedex.data.network.utils
 
 import com.hackaprende.dogedex.utils.BASE_URL
 import com.hackaprende.dogedex.data.network.api.DogApiService

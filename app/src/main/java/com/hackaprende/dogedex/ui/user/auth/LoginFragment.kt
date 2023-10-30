@@ -1,18 +1,23 @@
 package com.hackaprende.dogedex.ui.user.auth
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.hackaprende.dogedex.R
 import com.hackaprende.dogedex.databinding.FragmentLoginBinding
+import com.hackaprende.dogedex.ui.user.auth.viewModel.LoginActivityViewModel
+import com.hackaprende.dogedex.utils.DogUtils
 
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+
+    private val sharedViewModel: LoginActivityViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +34,30 @@ class LoginFragment : Fragment() {
                 LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
             )
         }
+
+        binding.loginButton.setOnClickListener {
+            validateFields()
+        }
+    }
+
+    private fun validateFields() {
+        binding.emailInput.error = ""
+        binding.passwordInput.error = ""
+        val email = binding.emailEdit.text.toString()
+
+        if (!DogUtils.isValidEmail(email)) {
+            binding.emailInput.error = getString(R.string.email_is_not_valid)
+            return
+        }
+
+        val password = binding.passwordEdit.text.toString()
+        if (password.isEmpty()) {
+            binding.passwordInput.error = getString(R.string.password_must_not_be_empty)
+            return
+        }
+
+        // Perform sign in
+        sharedViewModel.signIn(email, password)
     }
 
     override fun onDestroy() {

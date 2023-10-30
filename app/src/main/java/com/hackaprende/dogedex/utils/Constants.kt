@@ -5,3 +5,5 @@ const val GET_ALL_DOGS = "dogs"
 const val DOG_KEY = "DOG_KEY"
 const val GRID_SPAN_COUNT = 3
 const val SIGN_UP_URL = "sign_up"
+const val SIGN_IN_URL = "sign_in"
+

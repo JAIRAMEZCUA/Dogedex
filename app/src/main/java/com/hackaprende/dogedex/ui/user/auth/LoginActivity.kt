@@ -53,9 +53,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+
+        //Las activiades son por medio de intents y la comunicacion entre fragment por medio de navGraph
 //        findNavController(R.id.nav_host_fragment).navigate(
 //            LoginActivityDirections.actionLoginActivityToMainActivity()
 //        )
+
+        //TODO Ponemos el finish para que cuando entremos al login y demos back , no nos vuelta a momstrar la activityLogin
+        finish()
     }
 
     private fun statusSuccess() {

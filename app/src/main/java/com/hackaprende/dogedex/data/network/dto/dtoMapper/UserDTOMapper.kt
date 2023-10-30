@@ -1,7 +1,7 @@
 package com.hackaprende.dogedex.data.network.dto.dtoMapper
 
 import com.hackaprende.dogedex.data.network.api.models.User
-import com.hackaprende.dogedex.data.network.dto.UserDTO
+import com.hackaprende.dogedex.data.network.dto.user.UserDTO
 
 
 object UserDTOMapper {

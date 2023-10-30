@@ -1,7 +1,7 @@
 package com.hackaprende.dogedex.data.network.repository
 
 import com.hackaprende.dogedex.R
-import com.hackaprende.dogedex.data.network.NetworkModule.retrofitService
+import com.hackaprende.dogedex.data.network.utils.NetworkModule.retrofitService
 import com.hackaprende.dogedex.data.network.dto.dtoMapper.DogDTOMapper
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatus
 import kotlinx.coroutines.Dispatchers
