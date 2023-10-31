@@ -1,6 +1,7 @@
 package com.hackaprende.dogedex.utils
 
 import android.app.Activity
+import android.content.Context
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -10,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import androidx.datastore.preferences.preferencesDataStore
 import coil.load
 import coil.request.Disposable
 
@@ -33,6 +35,7 @@ fun Activity.toast(text: String, timeToast: Int = Toast.LENGTH_SHORT) {
     return Toast.makeText(this, text, timeToast).show()
 }
 
+val Context.dataStore by preferencesDataStore(name = "USER_PREFERENCES_NAME")
 
 
 fun ImageView.loadImageCoin(url: String): Disposable {

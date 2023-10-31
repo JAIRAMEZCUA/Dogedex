@@ -66,6 +66,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     //coin
     implementation "io.coil-kt:coil:1.4.0"
+
+    //DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {

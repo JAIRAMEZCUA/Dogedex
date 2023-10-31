@@ -13,13 +13,13 @@
             android:name=".ui.dog.dogDetail.DogDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.user.auth.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.dog.dogList.DogListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.auth.LoginActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

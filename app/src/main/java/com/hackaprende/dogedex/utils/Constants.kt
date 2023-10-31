@@ -7,3 +7,8 @@ const val GRID_SPAN_COUNT = 3
 const val SIGN_UP_URL = "sign_up"
 const val SIGN_IN_URL = "sign_in"
 
+const val KEY_ID = "KEY_ID"
+const val KEY_TOKEN = "KEY_TOKEN"
+const val KEY_EMAIL = "KEY_EMAIL"
+
+
