@@ -31,5 +31,8 @@
     <string name="there_was_an_error">There was an error</string>
     <string name="wrong_user_or_password">Wrong user or password</string>
 
+    <!--    LOGOUT-->
+    <string name="this_is_a_content_description">This is a content description</string>
+    <string name="logout">Logout</string>
 
 </resources>

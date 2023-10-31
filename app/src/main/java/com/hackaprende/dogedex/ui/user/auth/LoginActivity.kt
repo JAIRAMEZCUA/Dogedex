@@ -5,9 +5,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.longPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.hackaprende.dogedex.R
@@ -17,10 +14,7 @@ import com.hackaprende.dogedex.databinding.ActivityLoginBinding
 import com.hackaprende.dogedex.ui.MainActivity
 import com.hackaprende.dogedex.ui.user.auth.viewModel.LoginActivityViewModel
 import com.hackaprende.dogedex.ui.user.auth.viewModel.ViewModelFactoryAuth
-import com.hackaprende.dogedex.utils.KEY_EMAIL
-import com.hackaprende.dogedex.utils.KEY_ID
-import com.hackaprende.dogedex.utils.KEY_TOKEN
-import com.hackaprende.dogedex.utils.dataStore
+import com.hackaprende.dogedex.utils.DataManager
 import com.hackaprende.dogedex.utils.visible
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -64,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun saveUser(user: User, startLambdaActivity: () -> Unit) {
         lifecycleScope.launch(Dispatchers.IO) {
-            saveInDataStore(user)
+            DataManager(applicationContext).saveUser(user)
             startLambdaActivity()
         }
     }
@@ -99,13 +93,5 @@ class LoginActivity : AppCompatActivity() {
             .setPositiveButton(android.R.string.ok) { _, _ -> /** Dismiss dialog **/ }
             .create()
             .show()
-    }
-
-    private suspend fun saveInDataStore(user: User) {
-        dataStore.edit { pref ->
-            pref[longPreferencesKey(KEY_ID)] = user.id
-            pref[stringPreferencesKey(KEY_TOKEN)] = user.authenticationToken
-            pref[stringPreferencesKey(KEY_EMAIL)] = user.email
-        }
     }
 }
