@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.hackaprende.dogedex.data.network.api.ApiServiceInterceptor
 import com.hackaprende.dogedex.databinding.ActivityMainBinding
+import com.hackaprende.dogedex.ui.dog.dogList.DogListActivity
 import com.hackaprende.dogedex.ui.user.auth.LoginActivity
 import com.hackaprende.dogedex.ui.user.settings.SettingsActivity
 import com.hackaprende.dogedex.utils.DataManager
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initValidateUser()
+        verifyUserSignIn()
         initListener()
     }
 
@@ -26,14 +28,24 @@ class MainActivity : AppCompatActivity() {
         binding.settingsFab.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
+        binding.dogListFab.setOnClickListener {
+            openDogListActivity()
+        }
     }
 
-    private fun initValidateUser() {
+    private fun verifyUserSignIn() {
         lifecycleScope.launch(Dispatchers.IO) {
-            if (DataManager(applicationContext).getUser() == null) {
+            val user = DataManager(applicationContext).getUser()
+            if (user == null) {
                 logOutActivity()
+            } else {
+                ApiServiceInterceptor.setSessionToken(user.authenticationToken)
             }
         }
+    }
+
+    private fun openDogListActivity() {
+        startActivity(Intent(this, DogListActivity::class.java))
     }
 
     private fun logOutActivity() {

@@ -6,9 +6,14 @@ const val DOG_KEY = "DOG_KEY"
 const val GRID_SPAN_COUNT = 3
 const val SIGN_UP_URL = "sign_up"
 const val SIGN_IN_URL = "sign_in"
+const val ADD_DOG_FAV = "add_dog_to_user"
 
 const val USER_KEY_JSON = "USER_KEY"
 const val USER_PREFERENCES_NAME = "USER_PREFERENCES_NAME"
+
+
+const val AUTH_TOKEN=  "AUTH-TOKEN"
+const val NEEDS_AUTH_HEADER_KEY = "needs_authentication"
 
 
 

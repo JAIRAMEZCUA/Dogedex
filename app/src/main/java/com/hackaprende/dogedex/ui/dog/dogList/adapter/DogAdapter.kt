@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import com.hackaprende.dogedex.data.network.api.models.Dog
 import com.hackaprende.dogedex.databinding.DogListItemBinding
 
+
+//TODO los eventos de clic se pueden pasar como lambda en el constuctor o como parametro como el caso de onLongClick
 class DogAdapter(private val onItemSelected: (Dog) -> Unit) :
     ListAdapter<Dog, DogViewHolder>(DiffCallback) {
     companion object DiffCallback : DiffUtil.ItemCallback<Dog>() {
@@ -32,6 +34,11 @@ class DogAdapter(private val onItemSelected: (Dog) -> Unit) :
         position: Int
     ) {
         val dog = getItem(position)
-        dogViewHolder.bind(dog, onItemSelected)
+        dogViewHolder.bind(dog, onItemSelected, onLongItemClickListener!!)
+    }
+
+    private var onLongItemClickListener: ((Dog) -> Unit)? = null
+    fun setLongOnItemClickListener(onLongItemClickListener: (Dog) -> Unit) {
+        this.onLongItemClickListener = onLongItemClickListener
     }
 }

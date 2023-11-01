@@ -30,6 +30,8 @@
     <string name="user_already_exists">User already exists</string>
     <string name="there_was_an_error">There was an error</string>
     <string name="wrong_user_or_password">Wrong user or password</string>
+    <string name="error_adding_dog">There was an error adding dog to collection</string>
+
 
     <!--    LOGOUT-->
     <string name="this_is_a_content_description">This is a content description</string>
