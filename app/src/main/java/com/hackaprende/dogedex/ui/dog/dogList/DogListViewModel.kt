@@ -7,14 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.hackaprende.dogedex.data.network.api.models.Dog
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatusGeneric
 import com.hackaprende.dogedex.data.network.repository.DogRepository
-import com.hackaprende.dogedex.data.network.repository.UserAddDogRepository
 import kotlinx.coroutines.launch
 
 class DogListViewModel : ViewModel() {
 
     //repos
     private var dogRepo = DogRepository()
-    private var addDogToUser = UserAddDogRepository()
 
     //status respose
     private val _status = MutableLiveData<ApiResponseStatusGeneric<Any>>()
@@ -27,24 +25,18 @@ class DogListViewModel : ViewModel() {
         get() = _dogList
 
     init {
-        downloadUserDogs()
+        downloadDogs()
     }
 
     fun addDogFavorite(dogId: Long) {
         viewModelScope.launch {
-            handleAddDogToUserResponseStatus(addDogToUser.addDogToUser(dogId))
-        }
-    }
-
-    private fun downloadUserDogs() {
-        viewModelScope.launch {
-            handleAddDogToUserResponseStatus(addDogToUser.getDogToUser())
+            handleAddDogToUserResponseStatus(dogRepo.addDogToUser(dogId))
         }
     }
 
     private fun downloadDogs() {
         viewModelScope.launch {
-            handleResponseStatus(dogRepo.downloadDogs())
+            handleResponseStatus(dogRepo.getDogCollection())
         }
     }
 

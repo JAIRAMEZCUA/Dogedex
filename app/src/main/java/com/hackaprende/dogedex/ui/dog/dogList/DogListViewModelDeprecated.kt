@@ -6,15 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatus
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatusGeneric
-import com.hackaprende.dogedex.data.network.repository.DogRepositoryDeprecated
 import com.hackaprende.dogedex.data.network.repository.UserAddDogRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class DogListViewModelDeprecated : ViewModel() {
-    private var dogRepo = DogRepositoryDeprecated()
-    private var addDogToUser = UserAddDogRepository()
+    private var dogRepo = UserAddDogRepository()
 
     //    TODO esto se puede simplificar pero lo hice asi para practicar los flows
     private val _statusDownload = MutableStateFlow<ApiResponseStatus>(ApiResponseStatus.LOADING)
@@ -27,13 +25,13 @@ class DogListViewModelDeprecated : ViewModel() {
 
     fun addDogFavorite(dogId: Long) {
         viewModelScope.launch {
-            handleAddDogToUserResponseStatus(addDogToUser.addDogToUser(dogId))
+            handleAddDogToUserResponseStatus(dogRepo.addDogToUser(dogId))
         }
     }
 
     private fun downloadUserDogs() {
         viewModelScope.launch {
-            handleAddDogToUserResponseStatus(addDogToUser.getDogToUser())
+            handleAddDogToUserResponseStatus(dogRepo.getDogToUser())
         }
     }
 
