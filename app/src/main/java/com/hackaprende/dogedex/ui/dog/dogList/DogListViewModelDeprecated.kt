@@ -46,7 +46,7 @@ class DogListViewModelDeprecated : ViewModel() {
     }
 
     private fun handleAddDogToUserResponseStatus(apiResponseStatus: ApiResponseStatusGeneric<Any>) {
-        _status.value = ApiResponseStatusGeneric.Loading()
+        _status.value = ApiResponseStatusGeneric.LOADING()
         _status.value = apiResponseStatus
     }
 }

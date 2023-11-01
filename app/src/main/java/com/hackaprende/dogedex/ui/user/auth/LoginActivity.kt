@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         statusObserver.status.observe(this) {
             when (it) {
                 is ApiResponseStatusGeneric.ERROR -> statusError(it.error)
-                is ApiResponseStatusGeneric.Loading -> statusLoading()
+                is ApiResponseStatusGeneric.LOADING -> statusLoading()
                 is ApiResponseStatusGeneric.SUCCESS -> statusSuccess()
             }
         }
