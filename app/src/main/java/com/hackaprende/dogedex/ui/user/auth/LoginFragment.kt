@@ -11,6 +11,7 @@ import com.hackaprende.dogedex.R
 import com.hackaprende.dogedex.databinding.FragmentLoginBinding
 import com.hackaprende.dogedex.ui.user.auth.viewModel.LoginActivityViewModel
 import com.hackaprende.dogedex.utils.DogUtils
+import com.hackaprende.dogedex.utils.DogUtils.Companion.isValidEmail
 
 
 class LoginFragment : Fragment() {
@@ -45,7 +46,7 @@ class LoginFragment : Fragment() {
         binding.passwordInput.error = ""
         val email = binding.emailEdit.text.toString()
 
-        if (!DogUtils.isValidEmail(email)) {
+        if (!isValidEmail(email)) {
             binding.emailInput.error = getString(R.string.email_is_not_valid)
             return
         }

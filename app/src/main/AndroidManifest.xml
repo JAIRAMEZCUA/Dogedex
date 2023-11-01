@@ -11,7 +11,9 @@
         android:theme="@style/Theme.Dogedex">
         <activity
             android:name=".ui.user.settings.SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
         <activity
             android:name=".ui.dog.dogDetail.DogDetailActivity"
             android:exported="false" />
@@ -20,7 +22,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.dog.dogList.DogListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
