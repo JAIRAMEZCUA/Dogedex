@@ -11,10 +11,10 @@ const val ADD_DOG_FAV = "add_dog_to_user"
 const val USER_KEY_JSON = "USER_KEY"
 const val USER_PREFERENCES_NAME = "USER_PREFERENCES_NAME"
 
+const val GET_DOGS_USER = "get_user_dogs"
 
-const val AUTH_TOKEN=  "AUTH-TOKEN"
+const val AUTH_TOKEN = "AUTH-TOKEN"
 const val NEEDS_AUTH_HEADER_KEY = "needs_authentication"
-
 
 
 

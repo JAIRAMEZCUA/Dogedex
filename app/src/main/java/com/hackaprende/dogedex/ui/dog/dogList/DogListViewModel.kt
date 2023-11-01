@@ -25,14 +25,15 @@ class DogListViewModel : ViewModel() {
     val status: LiveData<ApiResponseStatusGeneric<Any>>
         get() = _status
 
-    init {
-        downloadDogs()
-    }
-
-
     fun addDogFavorite(dogId: Long) {
         viewModelScope.launch {
             handleAddDogToUserResponseStatus(addDogToUser.addDogToUser(dogId))
+        }
+    }
+
+    private fun downloadUserDogs() {
+        viewModelScope.launch {
+            handleAddDogToUserResponseStatus(addDogToUser.getDogToUser())
         }
     }
 
@@ -46,12 +47,12 @@ class DogListViewModel : ViewModel() {
 
     private fun handleAddDogToUserResponseStatus(apiResponseStatus: ApiResponseStatusGeneric<Any>) {
         _status.value = ApiResponseStatusGeneric.Loading()
-        if (apiResponseStatus is ApiResponseStatusGeneric.Loading) {
-            downloadDogs()
-        }
         _status.value = apiResponseStatus
     }
 }
+
+
+//TODO mostrar la foto de los perros que tengamos agregados en favrito y los que no solo el nombre
 
 //TODO SI QUEREMOS QUE DESCARGUE OTRO VALOR LO QUE HACEMOS ES DESCARGARLO POR DOS PARTES:
 //_dogList Y _dogList y hacer su casteo correspondiente a ANY una ve que se obtenga el valor deseado
