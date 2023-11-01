@@ -4,12 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hackaprende.dogedex.data.network.api.models.Dog
-import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatus
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatusGeneric
 import com.hackaprende.dogedex.databinding.ActivityDogListBinding
 import com.hackaprende.dogedex.ui.dog.dogDetail.DogDetailActivity
@@ -18,7 +14,6 @@ import com.hackaprende.dogedex.utils.DOG_KEY
 import com.hackaprende.dogedex.utils.GRID_SPAN_COUNT
 import com.hackaprende.dogedex.utils.toast
 import com.hackaprende.dogedex.utils.visible
-import kotlinx.coroutines.launch
 
 class DogListActivity : AppCompatActivity() {
 
@@ -35,23 +30,26 @@ class DogListActivity : AppCompatActivity() {
     }
 
     private fun initUIState() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dogListViewModel.statusDownload.collect {
-                    when (it) {
-                        ApiResponseStatus.LOADING -> loadState()
-                        is ApiResponseStatus.ERROR -> errorState(it.error)
-                        is ApiResponseStatus.SUCCESS -> successState(it.dogList)
-                    }
-                }
-            }
-        }
+        /*
+         TODO ASI SE IMPLEMENTA UN FLOW
+         lifecycleScope.launch {
+                  repeatOnLifecycle(Lifecycle.State.STARTED) {
 
+                       dogListViewModel.statusDownload.collect {
+                               when (it) {
+                                   ApiResponseStatus.LOADING -> loadState()
+                                   is ApiResponseStatus.ERROR -> errorState(it.error)
+                                   is ApiResponseStatus.SUCCESS -> successState(it.dogList)
+                               }
+                           }
+                  }
+              }
+      */
         dogListViewModel.status.observe(this) {
             when (it) {
-                is ApiResponseStatusGeneric.ERROR -> TODO()
-                is ApiResponseStatusGeneric.Loading -> TODO()
-                is ApiResponseStatusGeneric.SUCCESS -> TODO()
+                is ApiResponseStatusGeneric.ERROR -> errorState(it.error)
+                is ApiResponseStatusGeneric.Loading -> loadState()
+                is ApiResponseStatusGeneric.SUCCESS -> successState(it.data as List<Dog>)
             }
         }
     }
