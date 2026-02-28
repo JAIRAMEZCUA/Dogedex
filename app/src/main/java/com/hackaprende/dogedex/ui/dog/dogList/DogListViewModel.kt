@@ -30,18 +30,22 @@ class DogListViewModel : ViewModel() {
 
     fun addDogFavorite(dogId: Long) {
         viewModelScope.launch {
+            _status.value = ApiResponseStatusGeneric.LOADING()
             handleAddDogToUserResponseStatus(dogRepo.addDogToUser(dogId))
         }
     }
 
     private fun downloadDogs() {
         viewModelScope.launch {
+            _status.value = ApiResponseStatusGeneric.LOADING()
             handleResponseStatus(dogRepo.getDogCollection())
         }
     }
 
     private fun handleAddDogToUserResponseStatus(apiResponseStatus: ApiResponseStatusGeneric<Any>) {
-        _status.value = ApiResponseStatusGeneric.LOADING()
+        if (apiResponseStatus is ApiResponseStatusGeneric.SUCCESS) {
+            downloadDogs()
+        }
         _status.value = apiResponseStatus
     }
 

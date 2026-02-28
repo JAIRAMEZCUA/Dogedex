@@ -1,4 +1,4 @@
-package com.hackaprende.dogedex.data.network.repository
+package com.hackaprende.dogedex.data.network.repository.deprecated
 
 import com.hackaprende.dogedex.R
 import com.hackaprende.dogedex.data.network.utils.NetworkModule.retrofitService

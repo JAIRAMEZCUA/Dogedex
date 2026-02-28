@@ -1,4 +1,4 @@
-package com.hackaprende.dogedex.data.network.repository
+package com.hackaprende.dogedex.data.network.repository.deprecated
 
 import com.hackaprende.dogedex.R
 import com.hackaprende.dogedex.data.network.api.sealed.ApiResponseStatus
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.UnknownHostException
 
-class UserAddDogRepository {
+class UserAddDogRepositoryDeprecated {
     suspend fun addDogToUser(dogId: Long): ApiResponseStatusGeneric<Any> {
         return makeNetworkCall {
             val addDogFav = AddDogToUser(dogId)

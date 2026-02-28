@@ -8,15 +8,20 @@ import com.hackaprende.dogedex.data.network.dto.favorite.AddDogToUser
 import com.hackaprende.dogedex.data.network.utils.NetworkModule.retrofitService
 import com.hackaprende.dogedex.data.network.utils.makeNetworkCall
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
 class DogRepository {
 
     suspend fun getDogCollection(): ApiResponseStatusGeneric<List<Dog>> {
         return withContext(Dispatchers.IO) {
-            val allDogsListResponse = downloadDogs()
-            val userDogsListResponse = getUserDogs()
+            //Esto es deferred que lo que hace so peticiones asyncronas , y las dos se descargan simultaneamente
+            val allDogsListDeferred = async { downloadDogs() }
+            val userDogsListDeferred = async { getUserDogs() }
 
+            //response , espera a que todos los procesos terminen de descargar
+            val allDogsListResponse = allDogsListDeferred.await()
+            val userDogsListResponse = userDogsListDeferred.await()
 
             if (allDogsListResponse is ApiResponseStatusGeneric.ERROR) {
                 allDogsListResponse
@@ -44,7 +49,7 @@ class DogRepository {
             } else {
                 Dog(
                     it.id, it.index, "", "", "", "",
-                    "", "", "", "", ""
+                    "", "", "", "", "", inCollection = false
                 )
             }
         }

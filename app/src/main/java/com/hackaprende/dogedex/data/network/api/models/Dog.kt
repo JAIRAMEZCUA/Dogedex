@@ -16,7 +16,7 @@ data class Dog(
     val temperament: String,
     val weightFemale: String,
     val weightMale: String,
-    val inCollection: Boolean = false
+    val inCollection: Boolean = true
 ) : Parcelable, Comparable<Dog> {
     //El comparable hara que comparemos lo dos objetos tipo perro, además agrega el objeto sorted
     override fun compareTo(other: Dog): Int {
