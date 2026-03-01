@@ -10,31 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dogedex">
         <activity
-            android:name=".ui.user.settings.SettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
+            android:name=".presentation.view.activity.DogListActivity"
+            android:exported="true" >
 
-        <activity
-            android:name=".ui.dog.dogDetail.DogDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.user.auth.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.dog.dogList.DogListActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
