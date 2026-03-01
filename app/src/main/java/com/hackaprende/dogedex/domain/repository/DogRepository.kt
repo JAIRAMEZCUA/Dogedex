@@ -1,6 +1,6 @@
-package com.hackaprende.dogedex.doglist
+package com.hackaprende.dogedex.domain.repository
 
-import com.hackaprende.dogedex.Dog
+import com.hackaprende.dogedex.data.model.Dog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

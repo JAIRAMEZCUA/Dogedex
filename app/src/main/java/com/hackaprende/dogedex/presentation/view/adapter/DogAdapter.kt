@@ -1,11 +1,11 @@
-package com.hackaprende.dogedex.doglist
+package com.hackaprende.dogedex.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hackaprende.dogedex.Dog
+import com.hackaprende.dogedex.data.model.Dog
 import com.hackaprende.dogedex.databinding.DogListItemBinding
 
 class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
@@ -23,7 +23,7 @@ class DogAdapter : ListAdapter<Dog, DogAdapter.DogViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): DogViewHolder {
         val binding = DogListItemBinding
-            .inflate(LayoutInflater.from(parent.context))
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return DogViewHolder(binding)
     }
 

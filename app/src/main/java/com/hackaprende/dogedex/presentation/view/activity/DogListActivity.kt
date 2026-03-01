@@ -1,12 +1,12 @@
-package com.hackaprende.dogedex.doglist
+package com.hackaprende.dogedex.presentation.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hackaprende.dogedex.Dog
-import com.hackaprende.dogedex.R
 import com.hackaprende.dogedex.databinding.ActivityDogListBinding
+import com.hackaprende.dogedex.presentation.view.adapter.DogAdapter
+import com.hackaprende.dogedex.presentation.viewmodel.DogListViewModel
 
 class DogListActivity : AppCompatActivity() {
 
@@ -17,12 +17,15 @@ class DogListActivity : AppCompatActivity() {
         val binding = ActivityDogListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //recycler view setup
         val recycler = binding.dogRecycler
         recycler.layoutManager = LinearLayoutManager(this)
 
+        //adapter setup
         val adapter = DogAdapter()
         recycler.adapter = adapter
 
+        //observe the dog list and submit it to the adapter
         dogListViewModel.dogList.observe(this) {
             dogList ->
             adapter.submitList(dogList)

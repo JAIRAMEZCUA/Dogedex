@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dogedex">
         <activity
-            android:name=".doglist.DogListActivity"
+            android:name=".presentation.view.activity.DogListActivity"
             android:exported="true" >
 
             <intent-filter>

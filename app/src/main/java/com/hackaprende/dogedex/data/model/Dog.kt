@@ -1,4 +1,4 @@
-package com.hackaprende.dogedex
+package com.hackaprende.dogedex.data.model
 
 data class Dog(
     val id: Long, val index: Int, val name: String, val type: String,
